@@ -1,0 +1,124 @@
+	<!DOCTYPE html>
+	<html lang="zxx" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="{{url_for('static',filename='img/fav.png')}}">
+		<!-- Author Meta -->
+		<meta name="author" content="colorlib">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>Blogger</title>
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+			<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href="{{url_for('static',filename='css/linearicons.css')}}">
+			<link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.min.css')}}">
+			<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
+			<link rel="stylesheet" href="{{url_for('static',filename='css/owl.carousel.css')}}">
+			<link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+			<link rel="stylesheet" href="{{url_for('static',filename='css/footer.css')}}">
+			<link rel="stylesheet" href="{{url_for('static',filename='css/contact.css')}}">
+			<link rel="stylesheet" href="{{url_for('static',filename='css/posts.css')}}">
+			<link rel="stylesheet" href="{{url_for('static',filename='css/button.css')}}">  
+		</head>
+		<body>
+			<!-- Start Header Area -->
+			<header class="default-header">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						  <a class="navbar-brand" href="/">
+						  	<h3>Blogger</h3>
+						  </a>
+						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						    <span class="navbar-toggler-icon"></span>
+						  </button>
+
+						  <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+						    <ul class="navbar-nav">
+								<li><a href="/">Home</a></li>
+								<li><a href="/about">About</a></li>	
+								<li><a href="/contact">Contact</a></li>						
+						    </ul>
+						  </div>						
+					</div>
+				</nav>
+			</header>
+			<!-- End Header Area -->
+			<!-- start banner Area -->
+			<section class="banner-area relative" id="home" data-parallax="scroll" data-image-src="{{url_for('static',filename='img/header-bg.jpg')}}">
+				<div class="overlay-bg overlay"></div>
+				<div class="container">
+					<div class="row fullscreen">
+						<div class="banner-content align-items-center col-lg-12 col-md-12">		
+						<h1>Blogger</h1><br>
+						<h1>Start blogging and show your telent.</h1>
+						</div>													
+					</div>
+				</div>
+			</section>
+			
+			<hr>
+			<!-- End banner Area -->	
+			{% block body %} {% endblock %}
+			<footer class="footer-distributed">
+			<div class="footer-left">
+				<h3><span>Blogger</span></h3>
+				<p class="footer-links">
+					<a href="/">Home</a>
+					<br>
+					<a href="/about">About Us</a>
+					<br>
+					<a href="/contact">Contact Us</a>
+					<br>
+					<a href="/contact">Admin Panel</a>
+				</p>
+				<p class="footer-company-name">Blogger &copy; 2018</p>
+			</div>
+			<div class="footer-center">
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>80 Galaxy, Naroda</span> Ahmedabad, India</p>
+				</div>
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+1 555 123456</p>
+				</div>
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p>karanchaudhari@gmail.com</p>
+				</div>
+			</div>
+			<div class="footer-right">
+				<p class="footer-company-about">
+					<span>About the Blogger</span>
+					Here we publish the article and tutorial of programming<br>
+					<p class="text-right">- Karan Chaudhari, CEO</p>
+				</p>
+				<div class="footer-icons">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-instagram"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-github"></i></a>
+				</div>
+			</div>
+		</footer>
+			<script src="{{url_for('static',filename='js/vendor/jquery-2.2.4.min.js')}}"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+			<script src="{{url_for('static',filename='js/vendor/bootstrap.min.js')}}"></script>
+			<script src="{{url_for('static',filename='js/jquery.ajaxchimp.min.js')}}"></script>
+			<script src="{{url_for('static',filename='js/parallax.min.js')}}"></script>			
+			<script src="{{url_for('static',filename='js/owl.carousel.min.js')}}"></script>		
+			<script src="{{url_for('static',filename='js/jquery.magnific-popup.min.js')}}"></script>				
+			<script src="{{url_for('static',filename='js/jquery.sticky.js')}}"></script>
+			<script src="{{url_for('static',filename='js/main.js')}}"></script>
+		</body>
+	</html>

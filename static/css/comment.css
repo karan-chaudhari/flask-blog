@@ -1,0 +1,36 @@
+
+    .pb-cmnt-container {
+        font-family: "Poppins",sans-serif;
+        margin-top: 100px;
+    }
+
+    .pb-cmnt-name {
+        resize: none;
+        padding: 20px;
+        height: 50px;
+        width: 100%;
+        border: 1px solid #F2F2F2;
+    }
+
+    .pb-cmnt-textarea {
+        resize: none;
+        padding: 20px;
+        height: 130px;
+        width: 100%;
+        border: 1px solid #F2F2F2;
+    }
+
+    .delete-button{
+      font-size: 10px;
+      font-weight: 800;
+      padding: 15px 25px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: "Poppins",sans-serif;
+      background-color: #0085A1;
+      color: #fff;
+    }
+    .delete-button:hover, .delete-button:focus, .delete-button:active {
+      color: #fff;
+      background-color: #00657b !important;
+    }
