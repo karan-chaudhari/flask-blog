@@ -15,6 +15,15 @@ else:
     app.config['SQLALCHEMY_DATABASE_URI'] = params["prod_uri"]    
 db = SQLAlchemy(app)
 
+class Posts(db.Model):
+    sno = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(120), unique=False, nullable=False)
+    datetime = db.Column(db.String(20), unique=False, nullable=True)
+    tagline = db.Column(db.String(50), unique=False, nullable=False)
+    slug = db.Column(db.String(50), unique=False, nullable=False)
+    img_file = db.Column(db.String(50), unique=False, nullable=False)
+    content = db.Column(db.String(1000), unique=False, nullable=False)
+
 class Contacts(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=False, nullable=False)
@@ -25,7 +34,8 @@ class Contacts(db.Model):
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    posts = Posts.query.filter_by().all()
+    return render_template("index.html",posts=posts)
 
 @app.route("/about")
 def about():
@@ -42,5 +52,9 @@ def contact():
         db.session.add(entry)
         db.session.commit()
     return render_template("contact.html")
+
+@app.route("/post")
+def post():
+    return render_template("post.html")
 
 app.run(debug=True)
