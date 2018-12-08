@@ -1,0 +1,8 @@
+{
+    "params" :
+    {
+        "local_sever" : "True",
+        "local_uri" : "mysql://root:@localhost/code blogger",
+        "prod_uri" : "mysql://root:@localhost/code blogger"
+    }
+}
