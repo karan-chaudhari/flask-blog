@@ -14,15 +14,13 @@
                         </a>
                     </div>
                 <div class='post-info'>
-                    <h2 class='post-title'>
-                        <a href='#'>{{post.title}}</a>
-                    </h2>
+                        <a href='#'><h2>{{post.title}}</h2></a>
                 <div class='post-meta'>
                     <span class='post-author'><a href='#' target='_blank' title='Admin'>Karan Chaudhari</a></span>
                     <span class='post-date published'>{{post.datetime}}</span>
                 </div>
-                <p class='post-snippet'>{{post.content[0:150]}}.....</p>
-                    <a class='button button1' href='/post'>
+                <p class='post-snippet'><h5>{{post.content[0:150]}}.....</h5></p>
+                    <a class='button button1' href='/post/{{post.slug}}'>
                     	Read more</a>
                 </div>
                 </div>
