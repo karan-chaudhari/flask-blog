@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json,os
@@ -9,6 +9,7 @@ with open('config.json','r') as f:
 local_server = True
 
 app = Flask(__name__)
+app.secret_key = "my-secret-key"
 if local_server:
     app.config['SQLALCHEMY_DATABASE_URI'] = params["local_uri"]
 else:
@@ -51,6 +52,7 @@ def contact():
         entry = Contacts(name=name,email=email,phone_num=phone,message=msg,date=datetime.now())
         db.session.add(entry)
         db.session.commit()
+        flash("Thanks for submitting your detail. We will get back to you soon.","success")
     return render_template("contact.html")
 
 @app.route("/post/<string:post_slug>",methods=["GET"])
