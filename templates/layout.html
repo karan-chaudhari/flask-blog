@@ -14,7 +14,7 @@
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
-		<title>Blogger</title>
+		<title>{{params['blog_name']}}</title>
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
 			CSS
@@ -35,7 +35,7 @@
 				<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container">
 						  <a class="navbar-brand" href="/">
-						  	<h3>Blogger</h3>
+						  	<h3>{{params['blog_name']}}</h3>
 						  </a>
 						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						    <span class="navbar-toggler-icon"></span>
@@ -58,8 +58,8 @@
 				<div class="container">
 					<div class="row fullscreen">
 						<div class="banner-content align-items-center col-lg-12 col-md-12">		
-						<h1>Blogger</h1><br>
-						<h1>Start blogging and show your telent.</h1>
+						<h1>{{params['blog_name']}}</h1><br>
+						<h1>{{params['home_line']}}</h1>
 						</div>													
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 			{% block body %} {% endblock %}
 			<footer class="footer-distributed">
 			<div class="footer-left">
-				<h3><span>Blogger</span></h3>
+				<h3><span>{{params['blog_name']}}</span></h3>
 				<p class="footer-links">
 					<a href="/">Home</a>
 					<br>
@@ -80,7 +80,7 @@
 					<br>
 					<a href="/contact">Admin Panel</a>
 				</p>
-				<p class="footer-company-name">Blogger &copy; 2018</p>
+				<p class="footer-company-name">{{params['blog_name']}} &copy; 2018</p>
 			</div>
 			<div class="footer-center">
 				<div>
@@ -98,17 +98,18 @@
 			</div>
 			<div class="footer-right">
 				<p class="footer-company-about">
-					<span>About the Blogger</span>
-					Here we publish the article and tutorial of programming<br>
+					<span>About the {{params['blog_name']}}</span>
+					{{params['footer_about']}}<br>
 					<p class="text-right">- Karan Chaudhari, CEO</p>
 				</p>
 				<div class="footer-icons">
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-instagram"></i></a>
-					<a href="#"><i class="fa fa-linkedin"></i></a>
-					<a href="#"><i class="fa fa-github"></i></a>
+					<a href="{{params['fb_url']}}" target="_blank"><i class="fa fa-facebook"></i></a>
+					<a href="{{params['tw_url']}}" target="_blank"><i class="fa fa-twitter"></i></a>
+					<a href="{{params['insta_url']}}" target="_blank"><i class="fa fa-instagram"></i></a>
+					<a href="{{params['in_url']}}" target="_blank"><i class="fa fa-linkedin"></i></a>
+					<a href="{{params['gh_url']}}" target="_blank"><i class="fa fa-github"></i></a>
 				</div>
+
 			</div>
 		</footer>
 			<script src="{{url_for('static',filename='js/vendor/jquery-2.2.4.min.js')}}"></script>

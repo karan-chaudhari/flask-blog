@@ -3,6 +3,17 @@
     {
         "local_sever" : "True",
         "local_uri" : "mysql://root:@localhost/code blogger",
-        "prod_uri" : "mysql://root:@localhost/code blogger"
+        "prod_uri" : "mysql://root:@localhost/code blogger",
+        "blog_name" : "Code Blogger",
+        "home_line" : "Start blogging and show your telent.",
+        "about_line" : "Want to know about us check out our about page.",
+        "about_page" : "Hello Friends, Welcome to Code Blogger. In this blog we publish the code article and programming tutorials. We hope you like this blog. For more information stay tuned.",
+        "footer_about" : "In this blog we publish the code article and programming tutorials.",
+        "contact_line" : "You have question? we have answer.",
+        "fb_url" : "https://www.facebook.com/code-blogger",
+        "tw_url" : "https://www.twitter.com/code-blogger",
+        "insta_url" : "https://www.instagram.com/code-blogger",
+        "in_url" : "http://www.linkdin.com/code-blogger",
+        "gh_url" : "https://www.github.com/code-blogger"
     }
 }

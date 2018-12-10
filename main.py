@@ -36,11 +36,11 @@ class Contacts(db.Model):
 @app.route("/")
 def home():
     posts = Posts.query.filter_by().all()
-    return render_template("index.html",posts=posts)
+    return render_template("index.html",params=params,posts=posts)
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_template("about.html",params=params)
 
 @app.route("/contact", methods=["GET","POST"])
 def contact():
@@ -53,11 +53,11 @@ def contact():
         db.session.add(entry)
         db.session.commit()
         flash("Thanks for submitting your detail. We will get back to you soon.","success")
-    return render_template("contact.html")
+    return render_template("contact.html",params=params)
 
 @app.route("/post/<string:post_slug>",methods=["GET"])
 def post_route(post_slug):
     post = Posts.query.filter_by(slug=post_slug).first()
-    return render_template("post.html",post=post)
+    return render_template("post.html",params=params,post=post)
 
 app.run(debug=True)
