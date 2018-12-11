@@ -9,12 +9,12 @@
                 {% set fname = 'img/' + post.img_file %}
                 <div class='blog-post hentry index-post'>
                     <div class='post-image-wrap'>
-                        <a class='post-image-link' href='https://haster-way2themes.blogspot.com/2016/08/small-bridge-and-beautiful-view-of-beach_23.html'>
+                        <a class='post-image-link'>
                         <img alt='{{post.title}}' class='post-thumb' src='{{url_for('static',filename=fname)}}'/>
                         </a>
                     </div>
                 <div class='post-info'>
-                        <a href='#'><h2>{{post.title}}</h2></a>
+                        <a href='/post/{{post.slug}}'><h2>{{post.title}}</h2></a>
                 <div class='post-meta'>
                     <span class='post-author'><a href='#' target='_blank' title='Admin'>Karan Chaudhari</a></span>
                     <span class='post-date published'>{{post.datetime}}</span>
@@ -30,7 +30,7 @@
     </div>
 </div>
 <hr>
-<a class='button button1 float-left' href='#'>&larr; Previous</a>
-<a class='button button1 float-right' href='#'>Next &rarr;</a>
+<a class='button button1 float-left' href="{{prev}}">&larr; Previous</a>
+<a class='button button1 float-right' href="{{next}}">Next &rarr;</a>
 </div>
 {% endblock %}		
