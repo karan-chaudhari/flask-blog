@@ -8,22 +8,22 @@
 [ FONT ]*/
 
 @font-face {
-  font-family: Poppins-Regular;
+  font-family: "Poppins",sans-serif;
   src: url('../fonts/poppins/Poppins-Regular.ttf'); 
 }
 
 @font-face {
-  font-family: Poppins-Medium;
+  font-family: "Poppins",sans-serif;
   src: url('../fonts/poppins/Poppins-Medium.ttf'); 
 }
 
 @font-face {
-  font-family: Poppins-Bold;
+  font-family: "Poppins",sans-serif;
   src: url('../fonts/poppins/Poppins-Bold.ttf'); 
 }
 
 @font-face {
-  font-family: Poppins-SemiBold;
+  font-family: "Poppins",sans-serif;
   src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
 }
 
@@ -38,12 +38,12 @@
 
 body, html {
   height: 100%;
-  font-family: Poppins-Regular, sans-serif;
+  font-family: "Poppins",sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-  font-family: Poppins-Regular;
+  font-family: "Poppins",sans-serif;
   font-size: 14px;
   line-height: 1.7;
   color: #666666;
@@ -69,7 +69,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-  font-family: Poppins-Regular;
+  font-family: "Poppins",sans-serif;
   font-size: 14px;
   line-height: 1.7;
   color: #666666;
@@ -152,8 +152,7 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-  font-family: Poppins-Regular;
-  font-size: 13px;
+  font-family: "Poppins",sans-serif;
   line-height: 1.4;
   color: #999999;
 }
@@ -213,7 +212,7 @@ iframe {
 }
 
 .login100-form-title-1 {
-  font-family: Poppins-Bold;
+  font-family: "Poppins",sans-serif;
   font-size: 30px;
   color: #fff;
   text-transform: uppercase;
@@ -259,7 +258,7 @@ iframe {
 }
 
 .label-input100 {
-  font-family: Poppins-Regular;
+  font-family: "Poppins",sans-serif;
   font-size: 15px;
   color: #808080;
   line-height: 1.2;
@@ -274,7 +273,7 @@ iframe {
 
 /*---------------------------------------------*/
 .input100 {
-  font-family: Poppins-Regular;
+  font-family: "Poppins",sans-serif;
   font-size: 15px;
   color: #555555;
   line-height: 1.2;
@@ -335,7 +334,7 @@ input.input100 {
 }
 
 .label-checkbox100 {
-  font-family: Poppins-Regular;
+  font-family: "Poppins",sans-serif;
   font-size: 13px;
   color: #999999;
   line-height: 1.4;
@@ -404,7 +403,7 @@ input.input100 {
   background-color: #57b846;
   border-radius: 25px;
 
-  font-family: Poppins-Regular;
+  font-family: "Poppins",sans-serif;
   font-size: 16px;
   color: #fff;
   line-height: 1.2;
@@ -469,7 +468,7 @@ input.input100 {
   right: 2px;
   pointer-events: none;
 
-  font-family: Poppins-Medium;
+  font-family: "Poppins",sans-serif;
   color: #c80000;
   font-size: 13px;
   line-height: 1.4;

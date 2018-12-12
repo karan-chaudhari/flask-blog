@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json, os, math
@@ -75,8 +75,23 @@ def post_route(post_slug):
     post = Posts.query.filter_by(slug=post_slug).first()
     return render_template("post.html",params=params,post=post)
 
-@app.route("/deshboard")
+@app.route("/deshboard", methods=["GET","POST"])
 def deshboard():
+    if 'admin' in session and session['admin'] == params['admin_user']:
+        posts = Posts.query.all()
+        return render_template("deshboard.html",params=params,posts=posts)
+    if request.method == "POST":
+        username = request.form.get('username')
+        password = request.form.get('pass')
+        if username == params['admin_user'] and password == params['admin_pass']:
+            session['admin'] = username
+            posts = Posts.query.all()    
+        return render_template("deshboard.html",params=params,posts=posts)    
+    return render_template("login.html",params=params)
+
+@app.route("/logout")
+def logout():
+    session.pop('admin')
     return render_template("login.html",params=params)
 
 app.run(debug=True)
