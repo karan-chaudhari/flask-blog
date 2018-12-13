@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, session
+from flask import Flask, render_template, request, flash, session, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json, os, math
@@ -88,6 +88,34 @@ def deshboard():
             posts = Posts.query.all()    
         return render_template("deshboard.html",params=params,posts=posts)    
     return render_template("login.html",params=params)
+
+@app.route("/edit/<string:sno>",methods=["GET","POST"])
+def edit(sno):
+    if 'admin' in session and session['admin'] == params['admin_user']:
+        if request.method == "POST":
+            box_title = request.form.get('title')
+            box_tagline = request.form.get('tagline')
+            box_slug = request.form.get('slug')
+            box_img = request.form.get('img_file')
+            box_content = request.form.get('content')
+            date = datetime.now()
+            if sno=='0':
+                post = Posts(title=box_title,tagline=box_tagline,slug=box_slug,img_file=box_img,content=box_content)
+                db.session.add(post)
+                db.session.commit()
+                return redirect("/")
+            else:
+                post = Posts.query.filter_by(sno=sno).first()
+                post.title = box_title
+                post.tagline = box_tagline
+                post.slug = box_slug
+                post.img_file = box_img
+                post.content = box_content
+                post.datetime = date
+                db.session.commit()
+                return redirect("/deshboard")   
+    post = Posts.query.filter_by(sno=sno).first()
+    return render_template("edit.html",params=params,sno=sno,post=post)
 
 @app.route("/logout")
 def logout():

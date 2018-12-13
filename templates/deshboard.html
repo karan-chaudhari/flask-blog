@@ -68,6 +68,11 @@
 					</div>
 				</div>
 			</section>
+			<pre></pre>
+			<div class="text-center">
+				<button class="button button1">Add A New Post</button>
+			</div>
+			<pre></pre>
 			
             <h1 class="text-center">Edit Posts</h1>
 					<div class="limiter">
@@ -91,8 +96,8 @@
 									<td class="column1"><h4>{{post.sno}}</h4></td>
 									<td class="column2"><h4>{{post.title}}</h4></td>
 									<td class="column3"><h4>{{post.datetime}}</h4></td>
-									<td class="column4"><button class="button button1">View</button></td>
-									<td class="column5"><button class="button button1">Edit</button></td>
+									<td class="column4"><a href="/post/{{post.slug}}"><button class="button button1"> View</button></a></td>
+									<td class="column5"><a href="/edit/{{post.sno}}"><button class="button button1">Edit</button></a></td>
 									<td class="column6"><button class="button button1">Delete</button></td>
 								</tr>
 							{% endfor %}	
