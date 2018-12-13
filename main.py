@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, flash, session, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from werkzeug import secure_filename
 import json, os, math
 
 with open('config.json','r') as f:
@@ -10,6 +11,7 @@ local_server = True
 
 app = Flask(__name__)
 app.secret_key = "my-secret-key"
+app.config['UPLOAD_FOLDER'] = params['upload_location']
 if local_server:
     app.config['SQLALCHEMY_DATABASE_URI'] = params["local_uri"]
 else:
@@ -124,6 +126,15 @@ def delete_post(sno):
         db.session.delete(post)
         db.session.commit()
         return redirect("/deshboard")
+
+@app.route("/uploader",methods=["GET","POST"])
+def uploader():
+    if 'admin' in session and session['admin'] == params['admin_user']:
+        if request.method == "POST":
+            f = request.files['file1']
+            f.save(os.path.join(app.config['UPLOAD_FOLDER'],secure_filename(f.filename)))
+            flash("File successfully uploaded in folder","success")
+        return redirect("/deshboard")    
 
 @app.route("/logout")
 def logout():
