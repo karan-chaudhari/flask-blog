@@ -100,7 +100,7 @@ def edit(sno):
             box_content = request.form.get('content')
             date = datetime.now()
             if sno=='0':
-                post = Posts(title=box_title,tagline=box_tagline,slug=box_slug,img_file=box_img,content=box_content)
+                post = Posts(title=box_title,datetime=date,tagline=box_tagline,slug=box_slug,img_file=box_img,content=box_content)
                 db.session.add(post)
                 db.session.commit()
                 return redirect("/")
