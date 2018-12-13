@@ -117,6 +117,14 @@ def edit(sno):
     post = Posts.query.filter_by(sno=sno).first()
     return render_template("edit.html",params=params,sno=sno,post=post)
 
+@app.route("/delete_post/<string:sno>")
+def delete_post(sno):
+    if 'admin' in session and session['admin'] == params['admin_user']:
+        post = Posts.query.filter_by(sno=sno).first()
+        db.session.delete(post)
+        db.session.commit()
+        return redirect("/deshboard")
+
 @app.route("/logout")
 def logout():
     session.pop('admin')
