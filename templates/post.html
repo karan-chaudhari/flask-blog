@@ -78,8 +78,12 @@
         <div class="col-lg-8 col-md-10 mx-auto">
             <div class="panel panel-info">
                 <div class="panel-body">
-                  <h1>Comment</h1>
-                    <form action="#" method="post">
+                  {% if comments.count() > 0 %} 	
+                  <h2><span>({{comments.count()}}) Comments :</span></h2> <br>
+                  {% else %}
+                  <h2><span>Comment :</span></h2> <br>
+                  {% endif %}
+                    <form action="/post/{{post.sno}}/comment" method="post">
                     <input type="text" name="cmntr_name" placeholder="Your name" class="pb-cmnt-name" required></input>
                     <textarea name="comment" placeholder="Write your comment here!" class="pb-cmnt-textarea" required></textarea>
                     <button class="button button1" type="submit">Publish</button>
@@ -87,13 +91,13 @@
                     <hr>
                     <div>
                     {% for comment in comments %}
-                        <div class="float-left"><i>{{comment.timestamp}}
+                        <div class="float-left"><i>{{comment.datetime}}
                         </i>
                         </div>
                         <br>
                         <div><b>{{comment.name}} : </b> {{comment.body}} 
                         {% if session %}  
-                        <div class="float-right" method="post" method="get"><a href="/delete_comment/{{comment.sno}}"><button class="delete-button">Delete</button></a></div>
+                        <div class="float-right" method="post"><a href="/delete_comment/{{comment.sno}}"><button class="button button1">Delete</button></a></div>
                         {% endif %}
                         </div>
                         <hr>

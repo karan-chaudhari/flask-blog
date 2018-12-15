@@ -27,6 +27,13 @@ class Posts(db.Model):
     img_file = db.Column(db.String(50), unique=False, nullable=False)
     content = db.Column(db.String(1000), unique=False, nullable=False)
 
+class Comments(db.Model):
+    sno = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=False, nullable=False)
+    body = db.Column(db.String(500), unique=False, nullable=False)
+    datetime = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    post_sno = db.Column(db.Integer, db.ForeignKey('posts.sno'), nullable=False)
+
 class Contacts(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=False, nullable=False)
@@ -75,7 +82,29 @@ def contact():
 @app.route("/post/<string:post_slug>",methods=["GET"])
 def post_route(post_slug):
     post = Posts.query.filter_by(slug=post_slug).first()
-    return render_template("post.html",params=params,post=post)
+    comments = Comments.query.filter_by(post_sno=post.sno)
+    return render_template("post.html",params=params,post=post,comments=comments)
+
+@app.route("/post/<int:post_sno>/comment", methods=["GET","POST"])
+def comment(post_sno):
+    post = Posts.query.get_or_404(post_sno)
+    sno = Posts.query.get_or_404(post.sno)
+    if request.method == "POST":
+        name = request.form.get('cmntr_name')
+        comment = request.form.get('comment')
+        entry = Comments(sno=sno,name=name,body=comment,post_sno=post.sno)
+        db.session.add(entry)
+        db.session.commit()
+    comments = Comments.query.filter_by(post_sno=post.sno)    
+    return render_template('post.html',params=params,post=post,comments=comments)    
+
+@app.route("/delete_comment/<string:sno>")
+def delete_comment(sno):
+    if 'admin' in session and session['admin'] == params['admin_user']:
+        comment = Comments.query.filter_by(sno=sno).first()
+        db.session.delete(comment)
+        db.session.commit()
+        return redirect("/")
 
 @app.route("/deshboard", methods=["GET","POST"])
 def deshboard():
