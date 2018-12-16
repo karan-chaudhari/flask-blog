@@ -19,6 +19,7 @@ else:
 db = SQLAlchemy(app)
 
 class Posts(db.Model):
+    """ This post class connected with database. """
     sno = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), unique=False, nullable=False)
     datetime = db.Column(db.String(20), unique=False, nullable=True)
@@ -28,6 +29,7 @@ class Posts(db.Model):
     content = db.Column(db.String(1000), unique=False, nullable=False)
 
 class Comments(db.Model):
+    """ This comment class connected with database. """
     sno = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=False, nullable=False)
     body = db.Column(db.String(500), unique=False, nullable=False)
@@ -35,6 +37,7 @@ class Comments(db.Model):
     post_sno = db.Column(db.Integer, db.ForeignKey('posts.sno'), nullable=False)
 
 class Contacts(db.Model):
+    """ This contact class connected with database. """
     sno = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=False, nullable=False)
     email = db.Column(db.String(50), unique=False, nullable=False)
@@ -44,6 +47,8 @@ class Contacts(db.Model):
 
 @app.route("/")
 def home():
+    """ This function fetch the posts from the database and show those posts in main home page.
+    All posts are managed by prev and next. """
     posts = Posts.query.filter_by().all()[::-1]
     last = math.ceil(len(posts)/int(params['home_posts']))
     page = request.args.get('page')
@@ -64,10 +69,12 @@ def home():
 
 @app.route("/about")
 def about():
+    """ This fuction show about page. """
     return render_template("about.html",params=params)
 
 @app.route("/contact", methods=["GET","POST"])
 def contact():
+    """ This function submit the contact detail to the database. """
     if request.method == "POST":
         name = request.form.get("name")
         email = request.form.get("email")
@@ -81,12 +88,14 @@ def contact():
 
 @app.route("/post/<string:post_slug>",methods=["GET"])
 def post_route(post_slug):
+    """ This function shows the respective post. """
     post = Posts.query.filter_by(slug=post_slug).first()
     comments = Comments.query.filter_by(post_sno=post.sno)
     return render_template("post.html",params=params,post=post,comments=comments)
 
 @app.route("/post/<int:post_sno>/comment", methods=["GET","POST"])
 def comment(post_sno):
+    """ This function add the comments on blog post. And submit those comments to database. """
     post = Posts.query.get_or_404(post_sno)
     sno = Posts.query.get_or_404(post.sno)
     if request.method == "POST":
@@ -100,6 +109,7 @@ def comment(post_sno):
 
 @app.route("/delete_comment/<string:sno>")
 def delete_comment(sno):
+    """ This function delete the comments by admin. """
     if 'admin' in session and session['admin'] == params['admin_user']:
         comment = Comments.query.filter_by(sno=sno).first()
         db.session.delete(comment)
@@ -108,6 +118,8 @@ def delete_comment(sno):
 
 @app.route("/deshboard", methods=["GET","POST"])
 def deshboard():
+    """ This function used for login admin deshboard and redirect to admin deshboard.
+     But if admin is not login then it is redirect to login page. """
     if 'admin' in session and session['admin'] == params['admin_user']:
         posts = Posts.query.all()
         return render_template("deshboard.html",params=params,posts=posts)
@@ -122,6 +134,7 @@ def deshboard():
 
 @app.route("/edit/<string:sno>",methods=["GET","POST"])
 def edit(sno):
+    """ This function used for edit or add the blog post from the admin deshboard. """
     if 'admin' in session and session['admin'] == params['admin_user']:
         if request.method == "POST":
             box_title = request.form.get('title')
@@ -150,6 +163,7 @@ def edit(sno):
 
 @app.route("/delete_post/<string:sno>")
 def delete_post(sno):
+    """ This function delete the posts by admin. """
     if 'admin' in session and session['admin'] == params['admin_user']:
         post = Posts.query.filter_by(sno=sno).first()
         db.session.delete(post)
@@ -158,6 +172,7 @@ def delete_post(sno):
 
 @app.route("/uploader",methods=["GET","POST"])
 def uploader():
+    """ This function used for upload any file in folder from the admin deshboard. """
     if 'admin' in session and session['admin'] == params['admin_user']:
         if request.method == "POST":
             f = request.files['file1']
@@ -167,6 +182,7 @@ def uploader():
 
 @app.route("/logout")
 def logout():
+    """ This function used for logout admin deshboard. """
     session.pop('admin')
     return render_template("login.html",params=params)
 
