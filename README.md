@@ -19,6 +19,19 @@ Clone this repo to your local machine using https://github.com/karan-chaudhari/f
 
 This repo running on your machine local server. And require xampp then start the Apache & MySQL. After add the database file. You can import life_thunder.sql file on your xampp. 
 
+## Features
+
+Here is all the feature available in this repo. 
+
+```
+Publish article or blog post.
+Comment on article.
+Delete comment by admin.
+Contact feature.
+Admin Deshboard login and logout.
+File uploader in deshboard.
+Add and Edit post from admin deshboard.
+```
 
 ## Built With
 
